@@ -1,5 +1,5 @@
 // Install handler.
-chrome.runtime.onInstalled.addListener(async function(details) {
+chrome.runtime.onInstalled.addListener(async function() {
   // TODO: Update context menu.
 });
 
