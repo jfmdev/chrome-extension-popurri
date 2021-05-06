@@ -25,8 +25,11 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "html-webpack-plugin": "^5.3.1",
+    "html-webpack-skip-assets-plugin": "^1.0.1",
     "prettier": "^2.2.1",
     "style-loader": "^2.0.0",
+    "svelte": "^3.38.2",
+    "svelte-loader": "^3.1.1",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.6.0"
   }

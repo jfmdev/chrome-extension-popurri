@@ -1,31 +1,34 @@
 const path = require('path');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackSkipAssetsPlugin = require('html-webpack-skip-assets-plugin').HtmlWebpackSkipAssetsPlugin;
 
 module.exports = {
   mode: 'development',
+  devtool: 'source-map',
+
   entry: {
     background: './src/background.js',
     options: './src/options.js',
   },
-  devtool: 'source-map',
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: "[name].js",
     clean: true
   },
 
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/options.html',
-      filename: "options.html"
+      filename: "options.html",
+      skipAssets: ['background.js']
     }),
+    new HtmlWebpackSkipAssetsPlugin(),
     new CopyWebpackPlugin({
       patterns: [{
         from: path.join(__dirname, 'src/'),
         globOptions: {
-          ignore: ["**/*.html", "**/*.js"],
+          ignore: ["**/*.html", "**/*.js", "**/*.svelte"],
         },
       }],
     }),
@@ -41,6 +44,16 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader','css-loader'],
       },
+      {
+        test: /\.svelte$/,
+        use: {
+          loader: 'svelte-loader',
+        },
+      },
     ],
+  },
+
+  resolve: {
+    extensions: ['.mjs', '.js', '.svelte'],
   },
 };
