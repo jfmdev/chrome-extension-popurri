@@ -1,6 +1,6 @@
-# Chrome extension
+# Chrome Extension Popurri
 
-TODO
+A proof-of-concept Chrome Extension developed with Webpack and Svelte.
 
 ## License
 

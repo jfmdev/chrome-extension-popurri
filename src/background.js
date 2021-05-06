@@ -1,9 +1,12 @@
+import _ from "lodash";
+
 // Install handler.
-chrome.runtime.onInstalled.addListener(async function () {
-  // TODO: Update context menu.
+chrome.runtime.onInstalled.addListener(function (details) {
+  // TODO: Do something.
+  console.log(_.toPairs(details));
 });
 
 // Startup handler.
 chrome.runtime.onStartup.addListener(function () {
-  // TODO: Update context menu.
+  // TODO: Do something.
 });
