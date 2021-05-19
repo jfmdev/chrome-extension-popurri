@@ -1,7 +1,8 @@
 {
-  "name": "Chrome Extension Popurri",
   "manifest_version": 3,
+  "name": "Chrome Extension Popurri",
   "version": "1.0.0",
+  "description": "A proof-of-concept Chrome Extension developed with Webpack and Svelte",
   "icons": {
     "16": "./images/icon_16.png",
     "32": "./images/icon_32.png",
@@ -9,7 +10,6 @@
     "64": "./images/icon_64.png",
     "128": "./images/icon_128.png"
   },
-  "description": "A proof-of-concept Chrome Extension developed with Webpack and Svelte",
   "background": {
     "service_worker": "background.js"
   },
@@ -17,5 +17,9 @@
   "permissions": [
     "contextMenus"
   ],
+  "action": {
+    "default_title": "Popurri menu",
+    "default_popup": "menu.html"
+  },
   "homepage_url": "https://github.com/jfmdev/chrome-extension-popurri"
 }

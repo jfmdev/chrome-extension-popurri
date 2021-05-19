@@ -1,7 +1,6 @@
 const path = require('path');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const HtmlWebpackSkipAssetsPlugin = require('html-webpack-skip-assets-plugin').HtmlWebpackSkipAssetsPlugin;
 
 module.exports = {
   mode: 'development',
@@ -9,6 +8,7 @@ module.exports = {
 
   entry: {
     background: './src/background.js',
+    menu: './src/menu.js',
     options: './src/options.js',
   },
 
@@ -19,11 +19,15 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
+      template: './src/menu.html',
+      filename: "menu.html",
+      chunks: ['menu']
+    }),
+    new HtmlWebpackPlugin({
       template: './src/options.html',
       filename: "options.html",
-      skipAssets: ['background.js']
+      chunks: ['options']
     }),
-    new HtmlWebpackSkipAssetsPlugin(),
     new CopyWebpackPlugin({
       patterns: [{
         from: path.join(__dirname, 'src/'),
@@ -55,5 +59,15 @@ module.exports = {
 
   resolve: {
     extensions: ['.mjs', '.js', '.svelte'],
+  },
+
+  optimization: {
+    minimize: true,
+    splitChunks: {
+      chunks(chunk) {
+        // Don't split background file, otherwise won't be loaded completely by Chrome.
+        return chunk.name !== 'background';
+      },
+    },
   },
 };

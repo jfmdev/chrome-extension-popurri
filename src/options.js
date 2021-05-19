@@ -1,6 +1,6 @@
-import App from "./svelte/main.svelte";
+import App from "./svelte/options.svelte";
 
-console.log("Hello World!");
+console.log("Hello Options!");
 
 const app = new App({
   target: document.getElementById("root"), // entry point in ../public/index.html
