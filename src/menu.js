@@ -1,6 +1,14 @@
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 document.addEventListener("DOMContentLoaded", async function () {
-  const titles = document.getElementsByTagName('h1');
-  if(titles.length > 0) {
-    titles[0].innerHTML = "Menu";
-  }
+  document.getElementById('scrap').addEventListener('click', function(evt) {
+    alert('WIP - URL scraping');
+    evt.preventDefault();
+  });
+
+  document.getElementById('right').addEventListener('click', function(evt) {
+    alert('WIP - Right click');
+    evt.preventDefault();
+  });
 });
