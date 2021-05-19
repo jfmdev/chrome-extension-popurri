@@ -1,5 +1,5 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bulma/css/bulma.min.css";
 
 document.addEventListener("DOMContentLoaded", async function () {
   document.getElementById('scrap').addEventListener('click', function(evt) {
