@@ -8,8 +8,10 @@ module.exports = {
 
   entry: {
     background: './src/background.js',
-    menu: './src/menu.js',
-    options: './src/options.js',
+    content: './src/content.js',
+    menu: './src/pages/menu.js',
+    options: './src/pages/options.js',
+    scraper: './src/pages/scraper.js',
   },
 
   output: {
@@ -19,14 +21,21 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/menu.html',
+      template: './src/pages/menu.html',
       filename: "menu.html",
       chunks: ['menu']
     }),
     new HtmlWebpackPlugin({
-      template: './src/options.html',
+      template: './src/pages/svelte_base.html',
       filename: "options.html",
-      chunks: ['options']
+      chunks: ['options'],
+      title: "Popurri | Settings",
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/pages/svelte_base.html',
+      filename: "scraper.html",
+      chunks: ['scraper'],
+      title: "Popurri | Scraper",
     }),
     new CopyWebpackPlugin({
       patterns: [{
@@ -69,8 +78,8 @@ module.exports = {
     minimize: true,
     splitChunks: {
       chunks(chunk) {
-        // Don't split background file, otherwise won't be loaded completely by Chrome.
-        return chunk.name !== 'background';
+        // Don't split background nor content files, otherwise won't be loaded completely by Chrome.
+        return chunk.name !== 'background' && chunk.name !== 'content';
       },
     },
   },

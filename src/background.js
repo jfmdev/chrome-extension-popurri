@@ -4,13 +4,11 @@ import SearchEngine from "./misc/search-engine";
 
 // Install handler.
 chrome.runtime.onInstalled.addListener(function () {
-  // Add item to context menu.
   updateContextMenu();
 });
 
 // Startup handler.
 chrome.runtime.onStartup.addListener(function () {
-  // Add item to context menu.
   updateContextMenu();
 });
 
@@ -26,7 +24,7 @@ chrome.contextMenus.onClicked.addListener(function (info, tab) {
   }
 });
 
-// Function for add items to context menu.
+// Add extension's items to context menu.
 function updateContextMenu() {
   // Clear previuos entries (if any).
   chrome.contextMenus.removeAll();

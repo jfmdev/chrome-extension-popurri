@@ -15,11 +15,21 @@
   },
   "options_page": "options.html",
   "permissions": [
+    "activeTab",
     "contextMenus"
   ],
   "action": {
     "default_title": "Popurri menu",
     "default_popup": "menu.html"
   },
+ "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
   "homepage_url": "https://github.com/jfmdev/chrome-extension-popurri"
 }

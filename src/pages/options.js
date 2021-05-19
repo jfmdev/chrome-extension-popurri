@@ -1,4 +1,4 @@
-import App from "./svelte/options.svelte";
+import App from "./components/options.svelte";
 
 console.log("Hello Options!");
 
