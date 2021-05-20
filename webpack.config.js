@@ -10,8 +10,7 @@ module.exports = {
     background: './src/background.js',
     content: './src/content.js',
     menu: './src/pages/menu.js',
-    options: './src/pages/options.js',
-    scraper: './src/pages/scraper.js',
+    svelte: './src/pages/svelte.js',
   },
 
   output: {
@@ -26,22 +25,24 @@ module.exports = {
       chunks: ['menu']
     }),
     new HtmlWebpackPlugin({
-      template: './src/pages/svelte_base.html',
+      template: './src/pages/svelte.ejs',
+      templateParameters: { type: 'options' },
       filename: "options.html",
-      chunks: ['options'],
-      title: "Popurri | Settings",
+      chunks: ['svelte'],
+      title: "Popurri | Extension settings",
     }),
     new HtmlWebpackPlugin({
-      template: './src/pages/svelte_base.html',
+      template: './src/pages/svelte.ejs',
+      templateParameters: { type: 'scraper' },
       filename: "scraper.html",
-      chunks: ['scraper'],
-      title: "Popurri | Scraper",
+      chunks: ['svelte'],
+      title: "Popurri | Website scraper",
     }),
     new CopyWebpackPlugin({
       patterns: [{
         from: path.join(__dirname, 'src/'),
         globOptions: {
-          ignore: ["**/*.html", "**/*.js", "**/*.svelte"],
+          ignore: ["**/*.html", "**/*.ejs", "**/*.js", "**/*.svelte"],
         },
       }],
     }),
