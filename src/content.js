@@ -10,9 +10,9 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   if (msg.action === 'scrape') {
     // Get href attributes from link elements and separate URLs from emails.
     const hrefs = _.map($('body a'), elem => $(elem).attr('href'));
-    let urls = _.filter(hrefs, href => href.indexOf('mailto:') !== 0);
+    let urls = _.filter(hrefs, href => href && href.indexOf('mailto:') !== 0);
     let emails = _.map(
-      _.filter(hrefs, href => href.indexOf('mailto:') === 0),
+      _.filter(hrefs, href => href && href.indexOf('mailto:') === 0),
       mailto => mailto.substring(7)
     );
 

@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   listenClick('scrape', async function() {
     const tab = await getCurrentTab();
     chrome.tabs.create({
-      "url": "scraper.html?tab=" + tab.id
+      "url": `scraper.html?tab=${tab.id}&source=${encodeURIComponent(tab.url)}`,
     });
   });
 

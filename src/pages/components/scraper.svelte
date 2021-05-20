@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
 
-  let name = 'scraper';
+  let source = null;
   let urls = []
   let emails = []
   let error = null;
@@ -13,6 +13,7 @@
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const tab = parseInt(urlParams.get('tab'));
+      source = urlParams.get('source');
 
       // Scrape page.
       const data = await scrapePage(tab);
@@ -40,35 +41,48 @@
   }  
 </script>
 
-<h1 class="title">Popurri Scrapper</h1>
+<div class="content p-3">
+  <h1 class="title mb-2">Popurri Scraper</h1>
 
-{#if error}
-  <div class="has-text-danger has-text-centered">
-    <p>The page couldn't be scraped, please try reloading the tab or restaring Chrome.</p>
-    <p class="is-family-code mt-1">{error}</p>
-  </div>
-{:else}
-  <h2 class="subtitle mt-3 mb-1">Emails</h2>
-
-  {#if emails && emails.length > 0}
-    <ul>
-      {#each emails as email}
-        <li class="has-text-primary">{email}</li>
-      {/each}
-    </ul>
-  {:else}
-    <p class="has-text-grey">The page don't contain any e-mail address.</p>
+  {#if source}
+    <div>
+      <strong>Source:</strong>
+      <a href="{source}" target="_blank" class="has-text-primary" title="Scraped website">{source}</a>
+    </div>
   {/if}
 
-  <h2 class="subtitle mt-3 mb-1">URLs</h2>
-
-  {#if urls && urls.length > 0}
-    <ul>
-      {#each urls as url}
-        <li class="has-text-info">{url}</li>
-      {/each}
-    </ul>
+  {#if error}
+    <div class="columns mt-2">
+      <div class="column is-half is-offset-one-quarter">
+        <div class="notification is-danger has-text-centered p-2">
+          <p class="mb-1">The page couldn't be scraped, please try reloading the tab or restaring Chrome.</p>
+          <p class="is-family-code is-size-7 mb-0">{error}</p>
+        </div>
+      </div>
+    </div>
   {:else}
-    <p class="has-text-grey">The page don't contain any URL nor link.</p>
+    <h2 class="subtitle mt-3 mb-1">Emails</h2>
+
+    {#if emails && emails.length > 0}
+      <ul>
+        {#each emails as email}
+          <li><a href="mailto:{email}" class="has-text-info">{email}</a></li>
+        {/each}
+      </ul>
+    {:else}
+      <p class="has-text-grey">The page don't contain any e-mail address.</p>
+    {/if}
+
+    <h2 class="subtitle mt-3 mb-1">URLs</h2>
+
+    {#if urls && urls.length > 0}
+      <ul>
+        {#each urls as url}
+          <li><a href="{url}" target="_blank">{url}</a></li>
+        {/each}
+      </ul>
+    {:else}
+      <p class="has-text-grey">The page don't contain any URL nor link.</p>
+    {/if}
   {/if}
-{/if}
+</div>
