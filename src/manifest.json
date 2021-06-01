@@ -16,10 +16,11 @@
   "options_page": "options.html",
   "permissions": [
     "activeTab",
-    "contextMenus"
+    "contextMenus",
+    "notifications"
   ],
   "action": {
-    "default_title": "Popurri menu",
+    "default_title": "Popurri Menu",
     "default_popup": "menu.html"
   },
  "content_scripts": [

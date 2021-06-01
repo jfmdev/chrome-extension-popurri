@@ -79,7 +79,7 @@ module.exports = {
     minimize: true,
     splitChunks: {
       chunks(chunk) {
-        // Don't split background nor content files, otherwise won't be loaded completely by Chrome.
+        // Don't split background nor content files, otherwise won't be loaded correctly by Chrome.
         return chunk.name !== 'background' && chunk.name !== 'content';
       },
     },

@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-import SearchEngine from "./misc/search-engine";
+import SearchEngine from "./misc/searches";
 
 // Install handler.
 chrome.runtime.onInstalled.addListener(function () {
