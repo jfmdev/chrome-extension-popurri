@@ -17,7 +17,8 @@
   "permissions": [
     "activeTab",
     "contextMenus",
-    "notifications"
+    "notifications",
+    "storage"
   ],
   "action": {
     "default_title": "Popurri Menu",

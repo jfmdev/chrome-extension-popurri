@@ -1,6 +1,8 @@
 import _ from "lodash";
 
-import SearchEngine from "./misc/searches";
+import SearchUtils from "./misc/searches";
+
+const SEARCH_MENU_ID = "custom-search";
 
 // Install handler.
 chrome.runtime.onInstalled.addListener(function () {
@@ -12,12 +14,21 @@ chrome.runtime.onStartup.addListener(function () {
   updateContextMenu();
 });
 
+// Messages handler.
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  if (_.get(request, "action") === "updateContextMenu") {
+    updateContextMenu();
+    sendResponse({ success: true });
+  }
+});
+
 // Context menu handler.
-chrome.contextMenus.onClicked.addListener(function (info, tab) {
-  if (info.menuItemId === SearchEngine.KEY) {
+chrome.contextMenus.onClicked.addListener(async function (info, tab) {
+  if (info.menuItemId === SEARCH_MENU_ID) {
     // Search selected text.
+    const url = await SearchUtils.getSearchUrl(info.selectionText);
     chrome.tabs.create({
-      url: SearchEngine.getUrl(info.selectionText),
+      url,
       index: _.get(tab, "index", 0) + 1,
       selected: true,
     });
@@ -25,14 +36,15 @@ chrome.contextMenus.onClicked.addListener(function (info, tab) {
 });
 
 // Add extension's items to context menu.
-function updateContextMenu() {
+async function updateContextMenu() {
   // Clear previuos entries (if any).
   chrome.contextMenus.removeAll();
 
   // Add entry for search a selection.
+  const searchEngine = await SearchUtils.getSearchEngine();
   chrome.contextMenus.create({
-    id: SearchEngine.KEY,
-    title: SearchEngine.LABEL,
+    id: SEARCH_MENU_ID,
+    title: `Search on ${searchEngine.name}`,
     contexts: ["selection"],
   });
 }
