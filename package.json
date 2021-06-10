@@ -26,6 +26,7 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
     "prettier": "^2.2.1",
+    "prettier-plugin-svelte": "^2.3.0",
     "style-loader": "^2.0.0",
     "svelte": "^3.38.2",
     "svelte-loader": "^3.1.1",
