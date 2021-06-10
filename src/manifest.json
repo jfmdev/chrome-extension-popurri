@@ -14,22 +14,14 @@
     "service_worker": "background.js"
   },
   "options_page": "options.html",
-  "permissions": [
-    "activeTab",
-    "contextMenus",
-    "notifications",
-    "storage"
-  ],
+  "permissions": ["activeTab", "contextMenus", "notifications", "storage"],
   "action": {
     "default_title": "Popurri Menu",
     "default_popup": "menu.html"
   },
- "content_scripts": [
+  "content_scripts": [
     {
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
+      "matches": ["http://*/*", "https://*/*"],
       "js": ["content.js"]
     }
   ],
