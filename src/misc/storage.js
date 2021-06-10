@@ -25,6 +25,7 @@ const LocalStorage = {
   },
 
   Keys: {
+    JOKES: "jokes-api",
     SEARCH: "search-engine",
   },
 };

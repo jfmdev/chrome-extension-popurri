@@ -29,8 +29,13 @@ export async function getSearchUrl(textToSearch) {
   return searcher.url.replace("{SEARCH}", textToSearch);
 }
 
+export function setSearchEngine(engineKey) {
+  return Storage.setSingle(Storage.Keys.SEARCH, engineKey);
+}
+
 export default {
   SEARCH_ENGINES,
   getSearchEngine,
   getSearchUrl,
+  setSearchEngine,
 };

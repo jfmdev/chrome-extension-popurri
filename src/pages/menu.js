@@ -1,4 +1,4 @@
-import Jokes from "../misc/jokes";
+import JokesUtils from "../misc/jokes";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bulma/css/bulma.min.css";
@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", async function () {
       icon.className = "fas fa-sync-alt fa-spin";
 
       // Show joke.
-      const joke = await Jokes.chuckNorris();
-      await showNotification("Keep coding", joke);
+      const joke = await JokesUtils.getJoke();
+      await showNotification("Life is beautiful", joke);
 
       // Restore icon.
       icon.className = initialClass;
