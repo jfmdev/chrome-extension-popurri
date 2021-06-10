@@ -10,6 +10,16 @@ The extension provides three simple features:
 - Scrape a page to obtain all URLs and e-mail addresses. 
 - Show a random joke (obtained from a public API) in a notification.
 
+## Developer notes
+
+The background service worker (`background.js`) initializes (and keeps updated) the contextual menu in order to add the item that allows to search a selected text using a custom search engine (this is why the "contextMenus" permission is required).
+
+The content script (`content.js`) is charged of scraping the current web page when the user clicks the corresponding option from the extension's popup (this is why the "activeTab" permission is required).
+
+The extension's default popup (`menu.html` and `menu.js`) shows buttons for scrape the current page (showing the results in a new tab, defined by `scraper.svelte`), for show a random joke in a notification (this is why the "notifications" permissions is required) and for open the extension's options page.
+
+The extension's options page (`options.svelte`) allows to change the search engine and the API used to get the jokes, saving the choices in the Chrome's storage (this is why the "storage" permission is required).
+
 ## License
 
 Copyright 2021 © JFMDev.
