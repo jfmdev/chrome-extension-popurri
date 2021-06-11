@@ -9,6 +9,7 @@ The extension provides three simple features:
 - Search a selected text in a private search engine.
 - Scrape a page to obtain all URLs and e-mail addresses. 
 - Show a random joke (obtained from a public API) in a notification.
+- Open Google Maps showing the user's current location.
 
 ## Developer notes
 
@@ -16,7 +17,7 @@ The background service worker (`background.js`) initializes (and keeps updated) 
 
 The content script (`content.js`) is charged of scraping the current web page when the user clicks the corresponding option from the extension's popup (this is why the "activeTab" permission is required).
 
-The extension's default popup (`menu.html` and `menu.js`) shows buttons for scrape the current page (showing the results in a new tab, defined by `scraper.svelte`), for show a random joke in a notification (this is why the "notifications" permissions is required) and for open the extension's options page.
+The extension's default popup (`menu.html` and `menu.js`) shows buttons for scrape the current page (showing the results in a new tab, defined by `scraper.svelte`), for show a random joke in a notification (this is why the "notifications" permission is required), for open Google Maps showing the user's location (this is why the "geolocation" permission is required) and for open the extension's options page.
 
 The extension's options page (`options.svelte`) allows to change the search engine and the API used to get the jokes, saving the choices in the Chrome's storage (this is why the "storage" permission is required).
 

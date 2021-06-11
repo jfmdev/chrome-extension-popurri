@@ -36,6 +36,17 @@ document.addEventListener("DOMContentLoaded", async function () {
     setTimeout(window.close, 150);
   });
 
+  listenClick("location", async function () {
+    // Get current location.
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;
+      // Show a map centered at latitude and longitude.
+      chrome.tabs.create({
+        url: `https://maps.google.com/?q=${latitude},${longitude}`,
+      });
+    });
+  });
+
   listenClick("options", function () {
     chrome.runtime.openOptionsPage();
   });

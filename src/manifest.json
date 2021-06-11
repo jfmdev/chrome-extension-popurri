@@ -14,7 +14,13 @@
     "service_worker": "background.js"
   },
   "options_page": "options.html",
-  "permissions": ["activeTab", "contextMenus", "notifications", "storage"],
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "geolocation",
+    "notifications",
+    "storage"
+  ],
   "action": {
     "default_title": "Popurri Menu",
     "default_popup": "menu.html"
