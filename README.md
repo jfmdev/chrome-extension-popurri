@@ -11,7 +11,15 @@ The extension provides three simple features:
 - Show a random joke (obtained from a public API) in a notification.
 - Open Google Maps showing the user's current location.
 
+## Building
+
+For build the extension just run `yarn`, for install all dependencies, and then `yarn run build`, for build the files into the `dist/` folder.
+
+During development you can also run `yarn run watch`, which will watch the `src/` folder and automatically build the extension every time a file is updated.
+
 ## Developer notes
+
+The project uses ESLint as code linter and Prettier as code formatter. You can execute both of them using the commands `yarn run lint`, for detect errors, and `yarn run lint:fix`, for try to automatically fix errors and warnings.
 
 The background service worker (`background.js`) initializes (and keeps updated) the contextual menu in order to add the item that allows to search a selected text using a custom search engine (this is why the "contextMenus" permission is required).
 

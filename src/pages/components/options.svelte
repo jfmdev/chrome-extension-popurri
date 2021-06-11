@@ -32,36 +32,41 @@ initialize();
 <div class="container py-3">
   <h1 class="title mb-4">Popurri Settings</h1>
 
-  <div class="field">
-    <label class="label">Preferred Search Engine</label>
-    <div class="select">
-      <select
-        name="search-engine"
-        bind:value="{selectedEngine}"
-        on:change="{engineChanged}">
-        {#each searchEngines as engine}
-          <option value="{engine.key}">{engine.name}</option>
-        {/each}
-      </select>
+  <form name="settings">
+    <div class="field">
+      <label class="label" for="select_search-engine"
+        >Preferred Search Engine</label>
+      <div class="select">
+        <select
+          name="search-engine"
+          id="select_search-engine"
+          bind:value="{selectedEngine}"
+          on:blur="{engineChanged}">
+          {#each searchEngines as engine}
+            <option value="{engine.key}">{engine.name}</option>
+          {/each}
+        </select>
+      </div>
     </div>
-  </div>
 
-  <div class="field">
-    <label class="label">Preferred Jokes API</label>
-    <div class="control">
-      {#each jokesApis as jokesApi}
-        <label class="radio mr-2">
-          <input
-            type="radio"
-            name="jokes-api"
-            bind:group="{selectedApi}"
-            value="{jokesApi.key}"
-            on:change="{jokesApiChanged}" />
-          {jokesApi.name}
-        </label>
-      {/each}
+    <div class="field">
+      <span class="label">Preferred Jokes API</span>
+      <div class="control">
+        {#each jokesApis as jokesApi}
+          <label class="radio mr-2" for="input_joke-api_{jokesApi.key}">
+            <input
+              type="radio"
+              name="jokes-api"
+              id="input_joke-api_{jokesApi.key}"
+              value="{jokesApi.key}"
+              bind:group="{selectedApi}"
+              on:change="{jokesApiChanged}" />
+            {jokesApi.name}
+          </label>
+        {/each}
+      </div>
     </div>
-  </div>
+  </form>
 </div>
 
 <a href="https://github.com/jfmdev/chrome-extension-popurri">
