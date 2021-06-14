@@ -6,7 +6,7 @@ A proof-of-concept Chrome Extension developed with Webpack and Svelte.
 
 ## Features
 
-The extension provides three simple features:
+The extension provides four simple features:
 
 - Search a selected text in a private search engine.
 - Scrape a page to obtain all URLs and e-mail addresses. 
