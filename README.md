@@ -2,6 +2,8 @@
 
 A proof-of-concept Chrome Extension developed with Webpack and Svelte.
 
+[Install from Chrome Web Store](https://chrome.google.com/webstore/detail/ogfjggmceijfibolfmiikbkhaolmodep/)
+
 ## Features
 
 The extension provides three simple features:
